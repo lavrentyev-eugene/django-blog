@@ -1,0 +1,20 @@
+.admin-panel {
+  border: 2px solid #999;
+  border-radius: 10px;
+  position: fixed;
+  right: 50px;
+  bottom: 30px;
+  opacity: 0.3;
+}
+
+.admin-panel:hover{
+  opacity: 1;
+}
+.admin-panel a {
+  display: block;
+  margin: 10px 10px;
+}
+
+a.edit, a.delete {
+  display:none;
+}
