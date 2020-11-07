@@ -8,16 +8,16 @@ from time import time
 
 def gen_slug(title):
     try:
-        new_title = translit(title, reversed = True)
+        new_title = translit(title, reversed=True)
     except LanguageDetectionError:
         new_title = title
-    new_slug = slugify(new_title, allow_unicode = True)
+    new_slug = slugify(new_title, allow_unicode=True)
     return new_slug + '-' + str(int(time()))
 
 class Post(models.Model):
     title = models.CharField(max_length=150, db_index=True)
 
-    slug = models.SlugField(max_length=150, blank = True, unique=True)
+    slug = models.SlugField(max_length=150, blank=True, unique=True)
     tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
     body = models.TextField(blank=True, db_index=True)
     date_pub = models.DateTimeField(auto_now_add=True)
@@ -26,7 +26,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('post_detail_url', kwargs = {'slug': self.slug})
+        return reverse('post_detail_url', kwargs={'slug': self.slug})
 
     def get_update_url(self):
         return reverse('post_update_url', kwargs={'slug':self.slug})
@@ -50,13 +50,13 @@ class Tag(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('tag_detail_url', kwargs = {'slug':self.slug})
+        return reverse('tag_detail_url', kwargs={'slug':self.slug})
 
     def get_update_url(self):
         return reverse('tag_update_url', kwargs={'slug':self.slug})
 
     def get_delete_url(self):
-        return reverse('tag_delete_url', kwargs = {'slug':self.slug})
+        return reverse('tag_delete_url', kwargs={'slug':self.slug})
 
     class Meta:
         ordering = ['title']

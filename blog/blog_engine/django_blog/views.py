@@ -47,7 +47,7 @@ def posts_list(request):
 
 def tags_list(request):
     tags = Tag.objects.all()
-    return render(request, 'django_blog/tags_list.html', context = {'tags':tags})
+    return render(request, 'django_blog/tags_list.html', context={'tags':tags})
 
 class PostDetail(ObjectDetailMixin, View):
     model = Post

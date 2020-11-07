@@ -18,3 +18,9 @@
 a.edit, a.delete {
   display:none;
 }
+
+.card {
+  background-image:  url(../images/post-image.png);
+  background-size: cover;
+  background-position: center;
+}
